@@ -1,15 +1,19 @@
 package com.iot.ihouse.view.activity.mainpage;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.iot.ihouse.R;
 import com.iot.ihouse.databinding.ActivityMainBinding;
+import com.iot.ihouse.view.activity.houseoverview.HouseOverviewActivity;
 
 public class MainActivity extends AppCompatActivity {
+    public final static String INTENT_KEY_HOUSE_ID = "house_id";
     ActivityMainBinding binding;
     MainViewModel viewModel;
     HouseListAdapter adapter;
@@ -19,6 +23,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         viewModel  = new ViewModelProvider(this).get(MainViewModel.class);
+        adapter = new HouseListAdapter();
+        binding.rvHouseList.setAdapter(adapter);
+        binding.rvHouseList.setLayoutManager(new LinearLayoutManager(this));
+        initObserver();
+        initListener();
+    }
 
+    private void initListener() {
+        adapter.setHouseClickCallback(houseBO -> {
+            Intent intent = new Intent(MainActivity.this, HouseOverviewActivity.class);
+            intent.putExtra(INTENT_KEY_HOUSE_ID,houseBO.getId());
+            startActivity(intent);
+        });
+    }
+
+    private void initObserver() {
+        viewModel.getHouseBOList().observe(this, houseBOS -> {
+            if(houseBOS!=null){
+                adapter.setHouseBOList(houseBOS);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }

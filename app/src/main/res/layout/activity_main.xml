@@ -7,6 +7,37 @@
         android:layout_height="match_parent"
         tools:context=".view.activity.mainpage.MainActivity">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="6dp"
+            android:padding="4dp"
+            app:cardBackgroundColor="#292525"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="60sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/house_list_title"
+                    tools:text="房屋列表" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_houseList"
             android:layout_width="0dp"
