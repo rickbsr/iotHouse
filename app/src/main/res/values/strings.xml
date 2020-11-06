@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IotHouse</string>
+    <string name="app_name">數位地基主</string>
     <string name="node_list_title">節點列表</string>
     <string name="house_list_title">房屋列表</string>
     <string-array name="node_option_array">
