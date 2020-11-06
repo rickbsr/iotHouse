@@ -18,9 +18,14 @@ import com.iot.ihouse.R;
 import com.iot.ihouse.databinding.ActivityNodeDetailBindingImpl;
 import com.iot.ihouse.datasource.NodeRawDataItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static com.iot.ihouse.view.activity.mainpage.MainActivity.INTENT_KEY_HOUSE_ID;
 import static com.iot.ihouse.view.activity.nodelist.NodeListActivity.INTENT_KEY_NODE_ID;
@@ -67,8 +72,7 @@ public class NodeDetailActivity extends AppCompatActivity {
         List<Entry> values = new ArrayList<>();
         for(int i = 0;i<nodeRawDataItems.size();i++){
             NodeRawDataItem item = nodeRawDataItems.get(i);
-//            Log.e("yuli", "initChartData: "+item.getValue().get(0));
-            values.add(new Entry(i,i));
+            values.add(new Entry(i,Float.parseFloat(item.getValue().get(0))));
         }
         final LineDataSet dataSet = new LineDataSet(values,"聲音");
         dataSet.setMode(LineDataSet.Mode.LINEAR);//類型為折線
@@ -100,10 +104,33 @@ public class NodeDetailActivity extends AppCompatActivity {
         List<String> xList = new ArrayList<>();
         for(int i = 0;i<nodeRawDataItemList.size();i++){
             NodeRawDataItem nodeRawDataItem = nodeRawDataItemList.get(i);
-            xList.add(nodeRawDataItem.getTime());
+            switch (fetchTimeType){
+                case TEN_MIN:
+                    xList.add(processTenMin(nodeRawDataItem.getTime().substring(0,nodeRawDataItem.getTime().length()-1)));
+                    break;
+                case ONE_HOUR:
+//                    xList.add(processOneHour(nodeRawDataItem.getTime()));
+                    break;
+                    
+            }
         }
         xAxis.setLabelCount(nodeRawDataItemList.size());
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xList));
 
+    }
+
+    private String processTenMin(String time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.UK);
+        try {
+            Date date = sdf.parse(time);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.HOUR_OF_DAY, 8);
+            return calendar.getTime().getHours()+"點"+calendar.getTime().getMinutes()+"分";
+
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return time;
     }
 }
