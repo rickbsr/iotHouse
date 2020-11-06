@@ -52,7 +52,7 @@ public class NodeDetailViewModel extends AndroidViewModel {
         switch (fetchTimeType){
             case TEN_MIN:
                 endTime = sdf.format(new Date(now));
-                startTime = sdf.format(new Date(now - (10 *6*24*2* ONE_MINUTE_IN_MILLIS)));
+                startTime = sdf.format(new Date(now - (10 *ONE_MINUTE_IN_MILLIS)));
                 if(endTime.contains("+")){
                     int location = endTime.lastIndexOf("+");
                     endTime = endTime.substring(0,location);
@@ -75,7 +75,7 @@ public class NodeDetailViewModel extends AndroidViewModel {
         //測試用資料
         houseId = "25071267172";
         sensorId = "DHG_vol";
-        startTime = "2020-11-05T13:45:47";
+//        startTime = "2020-11-05T13:45:47";
         IotRetrofitClient.getInstance().getRawDataApi().getNodeRawDataList(houseId,sensorId,startTime,endTime).enqueue(new Callback<List<NodeRawDataItem>>() {
             @Override
             public void onResponse(@NotNull Call<List<NodeRawDataItem>> call, @NotNull Response<List<NodeRawDataItem>> response) {
