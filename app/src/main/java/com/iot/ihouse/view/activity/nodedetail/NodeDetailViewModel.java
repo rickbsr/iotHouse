@@ -52,7 +52,7 @@ public class NodeDetailViewModel extends AndroidViewModel {
         switch (fetchTimeType){
             case TEN_MIN:
                 endTime = sdf.format(new Date(now));
-                startTime = sdf.format(new Date(now - (10 *ONE_MINUTE_IN_MILLIS)));
+                startTime = sdf.format(new Date(now - (10*ONE_MINUTE_IN_MILLIS)));
                 if(endTime.contains("+")){
                     int location = endTime.lastIndexOf("+");
                     endTime = endTime.substring(0,location);

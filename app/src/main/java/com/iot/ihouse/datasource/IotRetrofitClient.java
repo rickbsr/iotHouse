@@ -42,7 +42,7 @@ public class IotRetrofitClient {
         };
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(3000, TimeUnit.SECONDS)
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(headerAuthorizationInterceptor)
                 .build();

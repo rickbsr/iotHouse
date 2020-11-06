@@ -126,7 +126,7 @@ public class NodeDetailActivity extends AppCompatActivity {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendar.add(Calendar.HOUR_OF_DAY, 8);
-            return calendar.getTime().getHours()+"點"+calendar.getTime().getMinutes()+"分";
+            return calendar.getTime().getSeconds()+"秒";
 
         }catch (ParseException e) {
             e.printStackTrace();

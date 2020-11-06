@@ -5,7 +5,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.houseoverview.HouseOverviewActivity">
+    tools:context=".view.activity.houseoverview.HouseOverviewActivity"
+    android:background="#ffffff"
+    >
 
     <ImageView
         android:id="@+id/iv_housePic"
@@ -35,6 +37,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:textColor="@android:color/black"
         tools:text="名稱：中和中正路凱悅社區小套"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
@@ -63,6 +66,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         tools:text="噪音程度：中等"
+        android:textColor="@android:color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_h55" />
@@ -93,6 +97,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         tools:text="溫度狀態：舒適"
+        android:textColor="@android:color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pb_noiseLevel" />
@@ -115,7 +120,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        tools:text="濕度狀態：潮濕"
+        tools:text="濕度狀態：乾燥"
+        android:textColor="@android:color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pb_tempLevel" />
@@ -134,33 +140,40 @@
 
     <ImageButton
         android:id="@+id/ibtn_noise"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="0dp"
+        android:background="#efffff"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_noiseLevel"
         app:layout_constraintStart_toEndOf="@+id/tv_noiseLevel"
         app:layout_constraintTop_toTopOf="@+id/tv_noiseLevel"
-        app:srcCompat="?android:attr/actionModeFindDrawable" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_sensor"/>
 
     <ImageButton
         android:id="@+id/ibtn_temp"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:background="#efffff"
         app:layout_constraintBottom_toBottomOf="@+id/tv_tempLevel"
         app:layout_constraintStart_toEndOf="@+id/tv_tempLevel"
         app:layout_constraintTop_toTopOf="@+id/tv_tempLevel"
-        app:srcCompat="?android:attr/actionModeFindDrawable" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_sensor"
+        />
 
     <ImageButton
         android:id="@+id/ibtn_hum"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="0dp"
+        android:background="#efffff"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_humLevel"
         app:layout_constraintStart_toEndOf="@+id/tv_humLevel"
         app:layout_constraintTop_toTopOf="@+id/tv_humLevel"
-        app:srcCompat="?android:attr/actionModeFindDrawable" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_sensor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

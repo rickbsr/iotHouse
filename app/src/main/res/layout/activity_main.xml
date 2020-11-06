@@ -5,7 +5,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activity.mainpage.MainActivity">
+        tools:context=".view.activity.mainpage.MainActivity"
+        android:background="#ffffff"
+        >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/title"
@@ -16,7 +18,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="6dp"
             android:padding="4dp"
-            app:cardBackgroundColor="#292525"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
             >
@@ -31,6 +33,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@android:color/black"
                     android:text="@string/house_list_title"
                     tools:text="房屋列表" />
             </androidx.constraintlayout.widget.ConstraintLayout>

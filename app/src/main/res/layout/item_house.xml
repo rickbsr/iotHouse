@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#9EBFC3"
+        android:background="#ffffff"
         >
 
         <androidx.cardview.widget.CardView
@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:padding="4dp"
-            app:cardBackgroundColor="#8D6FBFFF"
+            app:cardBackgroundColor="#8DE3E3E0"
             app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
+            app:cardElevation="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,9 +35,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     android:text="房屋名稱"
                     android:textSize="22sp"
-                    android:textColor="#002200"
+                    android:textColor="#006600"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +52,9 @@
                     android:layout_marginEnd="16dp"
                     android:text="房屋狀態"
                     android:textSize="22sp"
-                    android:textColor="#002200"
+                    android:textColor="#006600"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/btn_more"
                     app:layout_constraintStart_toEndOf="@id/house_name"
@@ -59,13 +63,15 @@
                 <Button
                     android:id="@+id/btn_more"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginEnd="32dp"
+                    android:background="#ffffff"
+                    android:textColor="#006600"
                     android:text="查看詳情"
-                    android:textSize="22sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/house_status"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@id/house_status" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

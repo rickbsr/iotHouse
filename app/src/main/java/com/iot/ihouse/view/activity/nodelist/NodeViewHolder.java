@@ -16,7 +16,7 @@ public class NodeViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(SensorItem sensorItem){
         binding.nodeName.setText(sensorItem.getName());
-        binding.nodeLocation.setText(sensorItem.getDesc());
+        binding.nodeLocation.setText("");
         binding.btnMore.setOnClickListener(view ->{
             if(callback!=null){
                 callback.onNodeClick(sensorItem);
