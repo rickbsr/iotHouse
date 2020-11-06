@@ -31,23 +31,6 @@ public class HouseOverviewViewModel extends AndroidViewModel {
     }
 
     public void fetchHouseData(){
-
-        IotRetrofitClient.getInstance().getNodeDataApi().getDeviceList().enqueue(new Callback<List<DeviceItem>>() {
-            @Override
-            public void onResponse(Call<List<DeviceItem>> call, Response<List<DeviceItem>> response) {
-                if(response.body()!=null){
-                    List<DeviceItem> deviceItems = response.body();
-                    for(DeviceItem item : deviceItems){
-                        Log.e("yuli", "onResponse: "+item.toString() );
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<DeviceItem>> call, Throwable t) {
-
-            }
-        });
         HouseOverviewBO fakeHouseOverviewBO = new HouseOverviewBO();
         fakeHouseOverviewBO.setHouseId(houseId);
         fakeHouseOverviewBO.setHouseName("名稱：中和中正路凱悅社區小套2");
