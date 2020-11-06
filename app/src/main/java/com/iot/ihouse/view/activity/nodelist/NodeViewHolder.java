@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iot.ihouse.databinding.ItemNodeBinding;
+import com.iot.ihouse.datasource.SensorItem;
 
 public class NodeViewHolder extends RecyclerView.ViewHolder {
     ItemNodeBinding binding;
@@ -13,12 +14,12 @@ public class NodeViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void bind(NodeBO nodeBO){
-        binding.nodeName.setText(nodeBO.getNodeName());
-        binding.nodeLocation.setText(nodeBO.getNodeLocation());
+    public void bind(SensorItem sensorItem){
+        binding.nodeName.setText(sensorItem.getName());
+        binding.nodeLocation.setText(sensorItem.getDesc());
         binding.btnMore.setOnClickListener(view ->{
             if(callback!=null){
-                callback.onNodeClick(nodeBO);
+                callback.onNodeClick(sensorItem);
             }
         });
     }

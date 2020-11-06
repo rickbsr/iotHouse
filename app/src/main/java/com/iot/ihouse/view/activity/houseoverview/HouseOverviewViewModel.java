@@ -37,7 +37,7 @@ public class HouseOverviewViewModel extends AndroidViewModel {
         fakeHouseOverviewBO.setHouseAddress("新北市中和區中正路755號10樓之2");
         fakeHouseOverviewBO.setNoiseLevel("噪音程度：中等");
         fakeHouseOverviewBO.setTempLevel("溫度狀態：舒適");
-        fakeHouseOverviewBO.setHumLevel("濕度狀態：潮濕");
+        fakeHouseOverviewBO.setHumLevel("濕度狀態：舒適");
         houseOverviewBO.postValue(fakeHouseOverviewBO);
     }
 

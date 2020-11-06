@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.iot.ihouse.R;
 import com.iot.ihouse.databinding.ItemNodeBinding;
+import com.iot.ihouse.datasource.SensorItem;
 
 import java.util.List;
 
 public class NodeListAdapter extends RecyclerView.Adapter<NodeViewHolder> {
-    List<NodeBO> nodeBOList;
+    List<SensorItem> sensorItemList;
     NodeClickCallback nodeClickCallback;
     @NonNull
     @Override
@@ -25,9 +26,9 @@ public class NodeListAdapter extends RecyclerView.Adapter<NodeViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NodeViewHolder holder, int position) {
-        NodeBO nodeBO =nodeBOList.get(position);
-        if(nodeBO!=null){
-            holder.bind(nodeBO);
+        SensorItem sensorItem =sensorItemList.get(position);
+        if(sensorItem!=null){
+            holder.bind(sensorItem);
         }
         if(nodeClickCallback!=null){
             holder.setCallback(nodeClickCallback);
@@ -36,11 +37,11 @@ public class NodeListAdapter extends RecyclerView.Adapter<NodeViewHolder> {
 
     @Override
     public int getItemCount() {
-        return nodeBOList==null?0:nodeBOList.size();
+        return sensorItemList==null?0:sensorItemList.size();
     }
 
-    public void setNodeBOList(List<NodeBO> nodeBOList) {
-        this.nodeBOList = nodeBOList;
+    public void setNodeBOList(List<SensorItem> sensorItemList) {
+        this.sensorItemList = sensorItemList;
     }
 
     public void setNodeClickCallback(NodeClickCallback nodeClickCallback) {
