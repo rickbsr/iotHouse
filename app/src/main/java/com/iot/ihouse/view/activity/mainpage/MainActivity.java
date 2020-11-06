@@ -31,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        adapter.setHouseClickCallback(houseBO -> {
+        adapter.setHouseClickCallback(deviceItem -> {
             Intent intent = new Intent(MainActivity.this, HouseOverviewActivity.class);
-            intent.putExtra(INTENT_KEY_HOUSE_ID,houseBO.getId());
+            intent.putExtra(INTENT_KEY_HOUSE_ID,deviceItem.getId());
             startActivity(intent);
         });
     }
 
     private void initObserver() {
-        viewModel.getHouseBOList().observe(this, houseBOS -> {
-            if(houseBOS!=null){
-                adapter.setHouseBOList(houseBOS);
+        viewModel.getDeviceItemList().observe(this, deviceItemList -> {
+            if(deviceItemList!=null){
+                adapter.setDeviceItemList(deviceItemList);
                 adapter.notifyDataSetChanged();
             }
         });

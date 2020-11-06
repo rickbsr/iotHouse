@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.iot.ihouse.R;
 import com.iot.ihouse.databinding.ItemHouseBinding;
+import com.iot.ihouse.datasource.DeviceItem;
 
 import java.util.List;
 
 public class HouseListAdapter extends RecyclerView.Adapter<HouseViewHolder>{
-    List<HouseBO> houseBOList;
+    List<DeviceItem> deviceItemList;
     HouseClickCallback houseClickCallback;
     @NonNull
     @Override
@@ -25,9 +26,9 @@ public class HouseListAdapter extends RecyclerView.Adapter<HouseViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull HouseViewHolder holder, int position) {
-        HouseBO houseBO = houseBOList.get(position);
-        if(houseBO!=null){
-            holder.bind(houseBO);
+        DeviceItem deviceItem = deviceItemList.get(position);
+        if(deviceItem!=null){
+            holder.bind(deviceItem);
         }
         if(houseClickCallback!=null){
             holder.setHouseClickCallback(houseClickCallback);
@@ -36,11 +37,11 @@ public class HouseListAdapter extends RecyclerView.Adapter<HouseViewHolder>{
 
     @Override
     public int getItemCount() {
-        return houseBOList==null?0:houseBOList.size();
+        return deviceItemList ==null?0: deviceItemList.size();
     }
 
-    public void setHouseBOList(List<HouseBO> houseBOList) {
-        this.houseBOList = houseBOList;
+    public void setDeviceItemList(List<DeviceItem> deviceItemList) {
+        this.deviceItemList = deviceItemList;
     }
 
     public void setHouseClickCallback(HouseClickCallback houseClickCallback) {

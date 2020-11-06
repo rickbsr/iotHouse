@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iot.ihouse.databinding.ItemHouseBinding;
+import com.iot.ihouse.datasource.DeviceItem;
 
 public class HouseViewHolder extends RecyclerView.ViewHolder {
     ItemHouseBinding binding;
@@ -14,12 +15,12 @@ public class HouseViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void bind(HouseBO houseBO) {
-        binding.houseName.setText(houseBO.name);
-        binding.houseStatus.setText(houseBO.status);
+    public void bind(DeviceItem deviceItem) {
+        binding.houseName.setText(deviceItem.getName());
+        binding.houseStatus.setText("安全");
         binding.btnMore.setOnClickListener(view -> {
             if (houseClickCallback != null) {
-                houseClickCallback.onHouseItemClick(houseBO);
+                houseClickCallback.onHouseItemClick(deviceItem);
             }
         });
     }
