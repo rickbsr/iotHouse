@@ -7,8 +7,16 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.iot.ihouse.datasource.DeviceItem;
+import com.iot.ihouse.datasource.IotRetrofitClient;
+import com.iot.ihouse.repo.IotRemoteRepository;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainViewModel extends AndroidViewModel {
     MutableLiveData<List<HouseBO>> houseBOList;
@@ -20,21 +28,33 @@ public class MainViewModel extends AndroidViewModel {
     LiveData<List<HouseBO>> getHouseBOList() {
         if (houseBOList == null) {
             houseBOList = new MutableLiveData<>();
-            fetchHouseList();
         }
+        fetchHouseList();
         return houseBOList;
     }
 
     private void fetchHouseList() {
-        List<HouseBO> houseDataList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            if (i % 2 == 0) {
-                HouseBO houseBO = new HouseBO(String.valueOf(i), "第" + i + "間小屋", "安全");
-                houseDataList.add(houseBO);
-            } else {
-                HouseBO houseBO = new HouseBO(String.valueOf(i), "第" + i + "間小屋", "危險");
-                houseDataList.add(houseBO);
+        IotRetrofitClient.getInstance().getNodeDataApi().getDeviceList().enqueue(new Callback<List<DeviceItem>>() {
+            @Override
+            public void onResponse(Call<List<DeviceItem>> call, Response<List<DeviceItem>> response) {
+                if(response.body()!=null){
+                    processToHouseBO(response.body());
+                }
             }
+
+            @Override
+            public void onFailure(Call<List<DeviceItem>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void processToHouseBO(List<DeviceItem> deviceItemList) {
+        List<HouseBO> houseDataList = new ArrayList<>();
+        for(int i = 0;i<deviceItemList.size();i++){
+            DeviceItem item = deviceItemList.get(i);
+            HouseBO houseBO = new HouseBO(String.valueOf(i+1),item.getDesc(),"安全");
+            houseDataList.add(houseBO);
         }
         houseBOList.postValue(houseDataList);
     }
